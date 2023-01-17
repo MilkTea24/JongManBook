@@ -17,7 +17,7 @@ public class Main {
 
         boolean[][] board = new boolean[a][b];
         for (int i = 0; i < a; i++) {
-            String line = scanner.next();
+            String line = scanner.next(); //next, nextLine 혼용하니 이상하게 값을 받아들임
             for (int j = 0; j < line.length(); j++) {
                 if (line.charAt(j) == '#') board[i][j] = true;
                 else board[i][j] = false;
@@ -44,7 +44,7 @@ public class Main {
 
         if ((x+1) < a && (y+1) < b) {
             if ((!board[x][y+1]) && (!board[x+1][y+1])) {
-                board[x][y] = true; board[x][y+1] = true;   board[x+1][y+1] = true;
+                board[x][y] = true; board[x][y+1] = true;   board[x+1][y+1] = true; //자기 자신 추가 안함
                 result += canCover(board, a, b);
                 board[x][y] = false;    board[x][y+1] = false;  board[x+1][y+1] = false;
             }
