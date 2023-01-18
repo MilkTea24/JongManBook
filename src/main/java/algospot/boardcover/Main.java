@@ -11,7 +11,7 @@ public class Main {
         }
     }
 
-    public static void oneCase() {
+    static void oneCase() {
         int a = Integer.parseInt(scanner.next());
         int b = Integer.parseInt(scanner.next());
 
