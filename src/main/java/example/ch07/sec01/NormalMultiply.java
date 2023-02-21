@@ -1,5 +1,7 @@
-package example.ch07.sec03;
+package example.ch07.sec01;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -37,33 +39,47 @@ public class NormalMultiply {
         return c;
     }
 
-    public static void main(String[] args) {
-        int a, b;
-        a = scanner.nextInt();
-        b = scanner.nextInt();
+    public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\만재\\휴학학기\\Algorithm\\JAVA\\JongManBook\\src\\main\\resources\\karatsuba.txt"));
+        int a = Integer.parseInt(reader.readLine());
+        int b = Integer.parseInt(reader.readLine());
+
         LinkedList<Integer> firstNum = new LinkedList<>();
         LinkedList<Integer> secondNum = new LinkedList<>();
         int[] temp = new int[a];
         for (int i = 0; i < a; i++) {
-            temp[a-1-i] = scanner.nextInt();
+            temp[a-1-i] = reader.read() - '0';
         }
         for (int i = 0; i < a; i++) {
             firstNum.add(temp[i]);
         }
         temp = new int[b];
+        reader.read();
+        reader.read();
         for (int i = 0; i < b; i++) {
-            temp[b-1-i] = scanner.nextInt();
+            temp[b-1-i] = reader.read() - '0';
         }
         for (int i = 0; i < b; i++) {
             secondNum.add(temp[i]);
         }
+        long start = System.nanoTime();
         LinkedList<Integer> result = multiply(firstNum, secondNum);
+        long end = System.nanoTime();
+
+        System.out.println((end - start) + "ns");
 
         Iterator<Integer> iter = result.descendingIterator();
+        int ind = (3 - result.size() % 3) % 3;
         while (iter.hasNext()) {
-            Integer tempInt = iter.next();
-            iter.remove();
-            System.out.print(tempInt);
+            if (ind == 3) {
+                ind = 0;
+                System.out.print(",");
+            } else {
+                Integer tempInt = iter.next();
+                iter.remove();
+                System.out.print(tempInt);
+                ind++;
+            }
         }
     }
 }

@@ -1,14 +1,13 @@
-package example.ch07.sec03;
+package example.ch07.sec01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.Reader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import static example.ch07.sec03.NormalMultiply.multiply;
-import static example.ch07.sec03.NormalMultiply.normalize;
+import static example.ch07.sec01.NormalMultiply.multiply;
+import static example.ch07.sec01.NormalMultiply.normalize;
 
 public class KaratsubaMultiply {
     Scanner scanner = new Scanner(System.in);
@@ -35,21 +34,23 @@ public class KaratsubaMultiply {
         for (int i = 0; i < b; i++) {
             secondNum.add(temp[i]);
         }
+
+        long start = System.nanoTime();
         LinkedList<Integer> result = karatsuba(firstNum, secondNum);
+        long end = System.nanoTime();
+
+        System.out.println((end - start) + "ns");
 
         Iterator<Integer> iter = result.descendingIterator();
-        String s = "";
         int ind = (3 - result.size() % 3) % 3;
         while (iter.hasNext()) {
             if (ind == 3) {
                 ind = 0;
                 System.out.print(",");
-                s += ",";
             } else {
                 Integer tempInt = iter.next();
                 iter.remove();
                 System.out.print(tempInt);
-                s += tempInt;
                 ind++;
             }
         }
@@ -59,7 +60,7 @@ public class KaratsubaMultiply {
         int an = a.size(), bn = b.size();
         if (an < bn) return karatsuba(b, a);
         if (an == 0 || bn == 0) return new LinkedList<>();
-        if (an <= 30) return multiply(a, b);
+        if (an <= 50) return multiply(a, b);
         int half = an / 2;
 
         int minValue;

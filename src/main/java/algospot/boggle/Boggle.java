@@ -11,7 +11,7 @@ public class Boggle {
         }
     }
 
-    public static void boggle() {
+    static void boggle() {
         char[][] board = new char[5][5];
         for (int i = 0; i < 5; i++) {
             String inputLine = scanner.nextLine();
@@ -27,7 +27,7 @@ public class Boggle {
         }
     }
 
-    public static String isExistAtBoard(String target, char[][] board) {
+    static String isExistAtBoard(String target, char[][] board) {
         int result = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -41,7 +41,7 @@ public class Boggle {
         return "NO";
     }
 
-    public static int DFS(String target, char[][] board, int i, int j, int index){
+    static int DFS(String target, char[][] board, int i, int j, int index){
         if (target.length() == index) return 1;
         int result = 0;
         if (i >= 1 && board[i-1][j] == target.charAt(index)) result = DFS(target, board, i-1, j, index + 1);

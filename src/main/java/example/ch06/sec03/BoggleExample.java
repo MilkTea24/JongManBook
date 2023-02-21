@@ -16,7 +16,7 @@ public class BoggleExample {
         }
     }
 
-    public static boolean hasWord(int y, int x, String word) {
+    static boolean hasWord(int y, int x, String word) {
         if(!inRange(y, x)) return false; //범위 안인지 아닌지는 기저사례에서 처리 -> 내가 작성한 코드보다 간결한 코드
         if(board[y][x] != word.charAt(0)) return false;
         if(word.length() == 1) return true;
@@ -28,12 +28,12 @@ public class BoggleExample {
         return false;
     }
 
-    public static boolean inRange(int y, int x) {
+    static boolean inRange(int y, int x) {
         if (y >= 0 && y < 5 && x >= 0 && x < 5) return true;
         else return false;
     }
 
-    public static void oneCase() throws Exception {
+    static void oneCase() throws Exception {
         for (int i = 0; i < 5; i++) {
             String line = scanner.nextLine();
             for (int j = 0; j < 5; j++) {
