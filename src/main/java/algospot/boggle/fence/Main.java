@@ -1,4 +1,4 @@
-package algospot.fence;
+package algospot.boggle.fence;
 
 import java.util.Scanner;
 

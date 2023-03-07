@@ -37,4 +37,5 @@ public class Main {
         if (x + n < len && visited[y][x + n] == false) result = jump(board[y][x + n], x + n, y) || result;
         return result;
     }
+
 }
